@@ -1,20 +1,15 @@
-import { notFound } from 'next/navigation'
-import { getFrameworkBySlug, getCollectionItem } from '@/lib/payload'
-import { RichText } from '@/lib/richtext'
-
-export const revalidate = 60
-
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string; postSlug: string }
+  params: Promise<{ slug: string; postSlug: string }>
 }) {
-  const framework = await getFrameworkBySlug(params.slug).catch(() => null)
+  const { slug, postSlug } = await params
+  const framework = await getFrameworkBySlug(slug).catch(() => null)
   if (!framework) notFound()
 
   const post = await getCollectionItem(
     'posts',
-    `[slug][equals]=${params.postSlug}`,
+    `[slug][equals]=${postSlug}`,
   ).catch(() => null)
   if (!post) notFound()
 
