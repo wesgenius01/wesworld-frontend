@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import { getFrameworkBySlug, getCollectionItem } from '@/lib/payload'
 import { RichText } from '@/lib/richtext'
 
+export const runtime = 'edge'
+
 export default async function PostPage({
   params,
 }: {
