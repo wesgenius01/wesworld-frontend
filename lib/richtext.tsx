@@ -26,7 +26,7 @@ function renderNode(node: any, key: number): React.ReactNode {
       return <p key={key}>{node.children?.map(renderNode)}</p>
 
     case 'heading': {
-      const Tag = node.tag as keyof JSX.IntrinsicElements
+     const Tag = node.tag as keyof React.JSX.IntrinsicElements
       return <Tag key={key}>{node.children?.map(renderNode)}</Tag>
     }
 
