@@ -8,13 +8,12 @@ export const revalidate = 60
 export default async function FrameworkPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const framework = await getFrameworkBySlug(params.slug).catch(() => null)
+  const { slug } = await params
+  const framework = await getFrameworkBySlug(slug).catch(() => null)
   if (!framework) notFound()
-
   const posts = await getPostsByFramework(framework.id).catch(() => [])
-
   return (
     <>
       <section style={{ textAlign: 'center' }}>
@@ -23,7 +22,6 @@ export default async function FrameworkPage({
           {framework.name}
         </h1>
       </section>
-
       {framework.body && (
         <section>
           <div className="prose">
@@ -31,7 +29,6 @@ export default async function FrameworkPage({
           </div>
         </section>
       )}
-
       {posts.length > 0 && (
         <section>
           <div className="section-head">
