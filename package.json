@@ -1,0 +1,29 @@
+{
+  "name": "wesworld-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
+  },
+  "dependencies": {
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^3.90.0"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}
