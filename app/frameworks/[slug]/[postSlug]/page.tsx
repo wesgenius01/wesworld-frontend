@@ -1,3 +1,7 @@
+import { notFound } from 'next/navigation'
+import { getFrameworkBySlug, getCollectionItem } from '@/lib/payload'
+import { RichText } from '@/lib/richtext'
+
 export default async function PostPage({
   params,
 }: {
@@ -6,13 +10,11 @@ export default async function PostPage({
   const { slug, postSlug } = await params
   const framework = await getFrameworkBySlug(slug).catch(() => null)
   if (!framework) notFound()
-
   const post = await getCollectionItem(
     'posts',
     `[slug][equals]=${postSlug}`,
   ).catch(() => null)
   if (!post) notFound()
-
   return (
     <section>
       <div className="section-head">
