@@ -8,7 +8,7 @@ export default function TermsPage() {
         <h1 className="section-title">Terms and Conditions</h1>
       </div>
       <div className="prose">
-        <p><em>Last updated: [insert date]</em></p>
+        <p><em>Last updated: july 2026</em></p>
 
         <h2>1. Acceptance of Terms</h2>
         <p>
