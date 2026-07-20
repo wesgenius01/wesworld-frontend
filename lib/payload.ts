@@ -1,6 +1,5 @@
-const PAYLOAD_API_URL = process.env.PAYLOAD_API_URL || 'http://localhost:3000'
-
 async function payloadFetch(path: string) {
+  const PAYLOAD_API_URL = process.env.PAYLOAD_API_URL || 'http://localhost:3000'
   const res = await fetch(`${PAYLOAD_API_URL}${path}`, {
     cache: 'no-store',
   })
@@ -60,6 +59,7 @@ export async function getFeaturedTestimonials() {
 }
 
 export function mediaUrl(mediaDoc: any, size?: string): string {
+  const PAYLOAD_API_URL = process.env.PAYLOAD_API_URL || 'http://localhost:3000'
   if (!mediaDoc) return ''
   if (size && mediaDoc.sizes?.[size]?.url) {
     return `${PAYLOAD_API_URL}${mediaDoc.sizes[size].url}`
