@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { getGlobal, getFrameworks } from '@/lib/payload'
 
-export const revalidate = 60
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
   const [home, frameworks] = await Promise.all([
     getGlobal('home-page').catch(() => null),
     getFrameworks().catch(() => []),
   ])
-
   const heroEyebrow = home?.heroEyebrow || 'Consciousness Remembrance'
   const line1 = home?.heroTitleLine1 || 'Spirituality'
   const emphasis = home?.heroTitleEmphasis || 'and'
@@ -20,7 +20,6 @@ export default async function HomePage() {
   const remembranceQuote =
     home?.remembranceQuote ||
     'You are not becoming something new. You are remembering what you always were.'
-
   return (
     <>
       <section className="hero">
@@ -40,7 +39,6 @@ export default async function HomePage() {
             </g>
           </svg>
         </div>
-
         <div className="eyebrow">{heroEyebrow}</div>
         <h1 className="title">
           {line1} <em>{emphasis}</em> {line2}
@@ -55,7 +53,6 @@ export default async function HomePage() {
           </Link>
         </div>
       </section>
-
       <section id="frameworks">
         <div className="section-head">
           <div className="section-eyebrow">The Frameworks</div>
@@ -72,7 +69,6 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
-
       <section style={{ textAlign: 'center' }}>
         <p
           className="prose"
