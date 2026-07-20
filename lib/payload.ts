@@ -2,16 +2,11 @@ const PAYLOAD_API_URL = process.env.PAYLOAD_API_URL || 'http://localhost:3000'
 
 async function payloadFetch(path: string) {
   const res = await fetch(`${PAYLOAD_API_URL}${path}`, {
-    // Revalidate content every 60s so new CMS edits show up without a
-    // full redeploy. Lower this during active content editing sessions,
-    // or wire up on-demand revalidation later if you want instant updates.
-    next: { revalidate: 60 },
+    cache: 'no-store',
   })
-
   if (!res.ok) {
     throw new Error(`Payload API error ${res.status} for ${path}`)
   }
-
   return res.json()
 }
 
