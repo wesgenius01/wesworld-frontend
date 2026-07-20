@@ -5,22 +5,10 @@ export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
-  let debugError = ''
-  let home = null
-  let frameworks: any[] = []
-
-  try {
-    home = await getGlobal('home-page')
-  } catch (e: any) {
-    debugError += `HOME ERROR: ${e.message} | `
-  }
-
-  try {
-    frameworks = await getFrameworks()
-  } catch (e: any) {
-    debugError += `FRAMEWORKS ERROR: ${e.message}`
-  }
-
+  const [home, frameworks] = await Promise.all([
+    getGlobal('home-page').catch(() => null),
+    getFrameworks().catch(() => []),
+  ])
   const heroEyebrow = home?.heroEyebrow || 'Consciousness Remembrance'
   const line1 = home?.heroTitleLine1 || 'Spirituality'
   const emphasis = home?.heroTitleEmphasis || 'and'
@@ -34,11 +22,6 @@ export default async function HomePage() {
     'You are not becoming something new. You are remembering what you always were.'
   return (
     <>
-      {debugError && (
-        <div style={{ background: 'red', color: 'white', padding: '1rem', wordBreak: 'break-all' }}>
-          DEBUG: {debugError}
-        </div>
-      )}
       <section className="hero">
         <div className="hero-glow" />
         <div className="geometry-wrap">
