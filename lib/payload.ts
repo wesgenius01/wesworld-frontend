@@ -2,7 +2,7 @@ async function payloadFetch(path: string) {
   const PAYLOAD_API_URL = process.env.PAYLOAD_API_URL || 'http://localhost:3000'
   const res = await fetch(`${PAYLOAD_API_URL}${path}`, {
     cf: { cacheTtl: 0, cacheEverything: false },
-  })
+  } as RequestInit)
   if (!res.ok) {
     throw new Error(`Payload API error ${res.status} for ${path}`)
   }
