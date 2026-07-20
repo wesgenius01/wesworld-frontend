@@ -1,12 +1,11 @@
 import { getGlobal, mediaUrl } from '@/lib/payload'
 import { RichText } from '@/lib/richtext'
 
-export const revalidate = 60
+export const runtime = 'edge'
 
 export default async function AboutPage() {
   const about = await getGlobal('about-page').catch(() => null)
   const founder = about?.founder
-
   return (
     <>
       <section style={{ textAlign: 'center' }}>
@@ -15,7 +14,6 @@ export default async function AboutPage() {
           The vision behind Wesworld
         </h1>
       </section>
-
       {about?.vision && (
         <section>
           <div className="section-head">
@@ -26,7 +24,6 @@ export default async function AboutPage() {
           </div>
         </section>
       )}
-
       {about?.mission && (
         <section>
           <div className="section-head">
@@ -37,7 +34,6 @@ export default async function AboutPage() {
           </div>
         </section>
       )}
-
       {about?.objectives?.length > 0 && (
         <section>
           <div className="section-head">
@@ -52,7 +48,6 @@ export default async function AboutPage() {
           </div>
         </section>
       )}
-
       {founder?.fullName && (
         <section style={{ textAlign: 'center' }}>
           <div className="section-head">

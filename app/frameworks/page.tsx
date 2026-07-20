@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import { getFrameworks } from '@/lib/payload'
 
-export const revalidate = 60
+export const runtime = 'edge'
 
 export default async function FrameworksPage() {
   const frameworks = await getFrameworks().catch(() => [])
-
   return (
     <section>
       <div className="section-head">

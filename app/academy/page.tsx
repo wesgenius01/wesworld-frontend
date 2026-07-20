@@ -1,6 +1,6 @@
 import { getCourses, getServices, getGlobal } from '@/lib/payload'
 
-export const revalidate = 60
+export const runtime = 'edge'
 
 export default async function AcademyPage() {
   const [courses, services, settings] = await Promise.all([
@@ -8,10 +8,8 @@ export default async function AcademyPage() {
     getServices().catch(() => []),
     getGlobal('site-settings').catch(() => null),
   ])
-
   const discordUrl = settings?.community?.discordUrl
   const whatsappUrl = settings?.community?.whatsappUrl
-
   return (
     <>
       <section style={{ textAlign: 'center' }}>
@@ -20,7 +18,6 @@ export default async function AcademyPage() {
           Courses, sessions, and community
         </h1>
       </section>
-
       {courses.length > 0 && (
         <section>
           <div className="section-head">
@@ -45,7 +42,6 @@ export default async function AcademyPage() {
           </div>
         </section>
       )}
-
       {services.length > 0 && (
         <section>
           <div className="section-head">
@@ -68,7 +64,6 @@ export default async function AcademyPage() {
           </div>
         </section>
       )}
-
       {(discordUrl || whatsappUrl) && (
         <section style={{ textAlign: 'center' }}>
           <div className="section-head">
