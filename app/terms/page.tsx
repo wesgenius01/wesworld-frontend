@@ -8,7 +8,7 @@ export default function TermsPage() {
         <h1 className="section-title">Terms and Conditions</h1>
       </div>
       <div className="prose">
-        <p><em>Last updated: july 2026</em></p>
+        <p><em>Last updated: July 21, 2026</em></p>
 
         <h2>1. Acceptance of Terms</h2>
         <p>
@@ -79,7 +79,7 @@ export default function TermsPage() {
         <h2>10. Contact Us</h2>
         <p>
           If you have questions about these Terms, please contact us at{' '}
-          <a href="mailto:enlightenment@wesworld.org">enlightnment@wesworld.org</a>.
+          <a href="mailto:enlightenment@wesworld.org">enlightenment@wesworld.org</a>.
         </p>
       </div>
     </section>

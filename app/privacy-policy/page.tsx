@@ -8,7 +8,7 @@ export default function PrivacyPolicyPage() {
         <h1 className="section-title">Privacy Policy</h1>
       </div>
       <div className="prose">
-        <p><em>Last updated: [insert date]</em></p>
+        <p><em>Last updated: July 21, 2026</em></p>
 
         <h2>1. Introduction</h2>
         <p>
@@ -83,7 +83,7 @@ export default function PrivacyPolicyPage() {
         <h2>10. Contact Us</h2>
         <p>
           If you have questions about this Privacy Policy, please contact us at{' '}
-          <a href="mailto:contact@wesworld.org">contact@wesworld.org</a>.
+          <a href="mailto:enlightenment@wesworld.org">enlightenment@wesworld.org</a>.
         </p>
       </div>
     </section>
