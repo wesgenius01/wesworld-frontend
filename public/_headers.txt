@@ -1,0 +1,5 @@
+https://wesworld-frontend.pages.dev/*
+  X-Robots-Tag: noindex
+
+/*
+  X-Robots-Tag: all
