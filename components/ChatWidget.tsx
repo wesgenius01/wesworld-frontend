@@ -28,12 +28,12 @@ export default function ChatWidget() {
         body: JSON.stringify({ message: trimmed }),
       })
       const data = await res.json()
-      const answer = data.answer || `DEBUG ERROR: ${data.error || 'unknown'} | ${data.detail || ''}`
+      const answer = data.answer || "I'm having trouble answering right now — please try again or email enlightenment@wesworld.org."
       setMessages((prev) => [...prev, { role: 'bot', text: answer }])
     } catch (e: any) {
       setMessages((prev) => [
         ...prev,
-        { role: 'bot', text: `DEBUG FETCH ERROR: ${e.message}` },
+        { role: 'bot', text: "Something went wrong connecting — please try again in a moment." },
       ])
     } finally {
       setLoading(false)
