@@ -68,7 +68,7 @@ export async function POST(request: Request) {
 SITE INFORMATION:
 ${context}`
 
-    const response: any = await (env as any).AI.run('@cf/meta/llama-3.1-8b-instruct', {
+    const response: any = await (env as any).AI.run('@cf/meta/llama-3.1-8b-instruct-fast', {
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: message },
